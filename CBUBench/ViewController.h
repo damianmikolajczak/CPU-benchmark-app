@@ -1,14 +1,19 @@
 //
 //  ViewController.h
-//  CBUBench
+//  CPUb
 //
-//  Created by Damian Mikołajczak on 10/01/2021.
+//  Created by Damian Mikołajczak on 05/01/2021.
 //
 
 #import <Cocoa/Cocoa.h>
+#import <CorePlot/CorePlot.h>
 
 @interface ViewController : NSViewController
 
+@property (weak) IBOutlet NSView *MenuContainer;
+@property (weak) IBOutlet CPTGraphHostingView *ChartContainer;
+
 
 @end
+
 

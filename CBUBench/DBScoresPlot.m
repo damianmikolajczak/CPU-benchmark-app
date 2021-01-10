@@ -3,7 +3,7 @@
 //  CBUBench
 //
 //  Created by Damian Mikołajczak on 10/01/2021.
-//
+//  A lot of this code was based on the tutorial of John Wordsworth @ https://www.johnwordsworth.com/2011/10/adding-charts-to-your-iphone-/-ipad-app-using-core-plot-0.9/
 
 #import "DBScoresPlot.h"
 #import "TestsScore.h"
@@ -29,7 +29,21 @@
 
 -(void)initialisePlot
 {
-    // Start with some simple sanity checks before we kick off
+    NSString            *fName=@"bench_archive";
+    NSMutableArray      *scoresArray= [NSKeyedUnarchiver unarchiveObjectWithFile:fName];
+    
+    float maxValue=0;
+    int objIndex=1;
+    for (TestsScore *testObj in scoresArray) {
+        if (testObj.TotalScore>maxValue){
+            maxValue=testObj.TotalScore;
+        }
+        objIndex++;
+    }
+    if (maxValue==0) {
+        maxValue=9000;
+    }
+    
     if ( (self.myView == nil) || (self.dataToPlot == nil) ) {
         NSLog(@"Cannot initialise plot without hosting view or data.");
         return;
@@ -52,44 +66,25 @@
     self.myGraph.plotAreaFrame.paddingLeft = 80.0f;
     NSLog(@"Add some padding");
     
-    // Tie the graph we've created with the hosting view.
     self.myView.hostedGraph = self.myGraph;
 
-    // If you want to use one of the default themes - apply that here.
-    //[self.graph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
-
-    // Create a line style that we will apply to the axis and data line.
     CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
     lineStyle.lineColor = [CPTColor whiteColor];
     lineStyle.lineWidth = 2.0f;
 
-    // Create a text style that we will use for the axis labels.
     CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
     textStyle.fontName = @"Helvetica";
     textStyle.fontSize = 14;
     textStyle.color = [CPTColor whiteColor];
 
-    // Create the plot symbol we're going to use.
     CPTPlotSymbol *plotSymbol = [CPTPlotSymbol crossPlotSymbol];
     plotSymbol.lineStyle = lineStyle;
     plotSymbol.size = CGSizeMake(8.0, 8.0);
     NSLog(@"Created some lines, trests and symbols");
-    // Setup some floats that represent the min/max values on our axis.
-    NSString            *fName=@"bench_archive";
-    NSMutableArray      *scoresArray= [NSKeyedUnarchiver unarchiveObjectWithFile:fName];
-    float maxValue=0;
-    int objIndex=1;
-    for (TestsScore *testObj in scoresArray) {
-        if (testObj.TotalScore>maxValue){
-            maxValue=testObj.TotalScore;
-            
-        }
-        objIndex++;
-    }
+    
     NSNumber *xAxisMax = [[NSNumber alloc] initWithInt:objIndex];
     NSNumber *yAxisMax = [[NSNumber alloc] initWithFloat:1.2*maxValue];
 
-    // We modify the graph's plot space to setup the axis' min / max values.
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)self.myGraph.defaultPlotSpace;
     plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:@0 length:xAxisMax];
     plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:@0 length:yAxisMax];

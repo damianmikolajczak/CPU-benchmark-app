@@ -795,6 +795,17 @@
                                     <action selector="TestStartButton:" target="KuC-w7-Ss2" id="vkp-BU-VfJ"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4i-K5-cUM">
+                                <rect key="frame" x="408" y="14" width="68" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="CDB" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6vM-rL-vsO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemThin" size="18"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="ClearButton:" target="KuC-w7-Ss2" id="e3a-Q9-aXS"/>
+                                </connections>
+                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2yd-Ci-n9G">
                                 <rect key="frame" x="102" y="257" width="286" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -835,7 +846,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rPK-LR-o4x">
-                                <rect key="frame" x="175" y="188" width="140" height="47"/>
+                                <rect key="frame" x="147" y="189" width="196" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0" id="SQW-R2-98p">
                                     <font key="font" metaFont="systemBold" size="42"/>
@@ -843,17 +854,6 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4i-K5-cUM">
-                                <rect key="frame" x="408" y="14" width="68" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="CDB" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6vM-rL-vsO">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="systemThin" size="18"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="ClearButton:" target="KuC-w7-Ss2" id="e3a-Q9-aXS"/>
-                                </connections>
-                            </button>
                         </subviews>
                     </view>
                     <connections>
